@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
@@ -12,11 +13,18 @@ public class LocalMultiplayerManager : MonoBehaviour
     const string KEYBOARD_NUM_SCHEME = "Keyboard Num";
     const string GAMEPAD_SCHEME = "Gamepad";
 
+    public Action<Transform> onPlayerJoined;
+
     [SerializeField]
     PlayerInputManager inputManager;
 
     HashSet<KeyValuePair<InputDevice, string>> pairedDevices = new HashSet<KeyValuePair<InputDevice, string>>();
 
+
+    public void PlayerJoined(Transform playerInput)
+    {
+        onPlayerJoined?.Invoke(playerInput);
+    }
 
     void Update()
     {
