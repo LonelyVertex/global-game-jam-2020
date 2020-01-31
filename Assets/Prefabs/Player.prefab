@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8984043305875680704}
   - component: {fileID: 8984043305875680710}
   - component: {fileID: 8984043305875680711}
+  - component: {fileID: 2008418932120608548}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -180,3 +181,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   rb: {fileID: 8984043305875690045}
+--- !u!114 &2008418932120608548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8984043305875690046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0831c742e20e34777a676148a1d4b125, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickRadius: 2
+  rocketDistance: 3
