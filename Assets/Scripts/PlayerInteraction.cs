@@ -13,6 +13,15 @@ public class PlayerInteraction : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, pickRadius);
     }
 
+    void OnDeath()
+    {
+        if (currentBox != null)
+        {
+            Destroy(currentBox.gameObject);
+            currentBox = null;
+        }
+    }
+
     void OnAction()
     {
         var isNearRocket = IsNearRocket();

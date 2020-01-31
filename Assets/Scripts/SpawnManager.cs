@@ -1,11 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SpawnManager : MonoBehaviour
 {
-    [Header("Spawn")]
-    [SerializeField] private GameObject boxPrefab;
-    [SerializeField] private float firstSpawn;
-    [SerializeField] private float spawnInterval;
 
     [Header("Area")]
     [SerializeField] private float areaWidth;
@@ -13,7 +11,20 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float innerAreaWidth;
     [SerializeField] private float innerAreaHeight;
 
+    private static SpawnManager instance;
     private Vector3 position;
+
+    public static SpawnManager Instance => instance;
+
+    void Awake()
+    {
+        instance = this;
+    }
+
+    private void Start()
+    {
+        position = transform.position;
+    }
 
     private void OnDrawGizmos()
     {
@@ -23,19 +34,7 @@ public class SpawnManager : MonoBehaviour
         Gizmos.DrawWireCube(transformPosition, new Vector3(innerAreaWidth, 1, innerAreaHeight));
     }
 
-    void Start()
-    {
-        position = transform.position;
-
-        InvokeRepeating(nameof(Spawn), firstSpawn, spawnInterval);
-    }
-
-    void Spawn()
-    {
-        Instantiate(boxPrefab, RandomSpawnPosition(), Quaternion.identity);
-    }
-
-    Vector3 RandomSpawnPosition()
+    public Vector3 RandomSpawnPosition()
     {
         var center = position.x;
         var x = RandomLinear(position.x, 0, areaWidth);
