@@ -59,7 +59,7 @@ public class @DefaultInput : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""2D Vector"",
+                    ""name"": ""WASD"",
                     ""id"": ""f4813ded-afe4-4e80-adbc-16f4bcae75da"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
@@ -114,6 +114,116 @@ public class @DefaultInput : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""Arrows"",
+                    ""id"": ""0bd32edb-cb81-4583-b5fe-c7d771e04e26"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""0434eeb8-40b5-477d-8cb8-b184b3d92f36"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard Alt"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""2fab3d2b-bd6e-46e2-a58e-081316772d5c"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard Alt"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""2d4f7a22-a149-4864-af63-b184d9a96565"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard Alt"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""fe921d02-ec36-4c58-bbbf-19b25bb46e32"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard Alt"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Num"",
+                    ""id"": ""024f2b77-6f52-42f4-8100-1b0c86ac2515"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""2a7e13ad-b701-434b-82a3-26d0c08e5de5"",
+                    ""path"": ""<Keyboard>/8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard Num"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""f367fe51-448f-419a-94d8-a55624823cff"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard Num"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""c69045c2-5d66-43df-bf0d-15768a7b4998"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard Num"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""68787192-5f3f-4477-b36a-f26293a5aaed"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard Num"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": """",
                     ""id"": ""db628a12-6fb4-436a-bf1f-bc7e42c62a55"",
                     ""path"": ""<Gamepad>/buttonSouth"",
@@ -127,10 +237,32 @@ public class @DefaultInput : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""9fec74f0-4f5a-4aee-9f10-ef3d94e28d7e"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/leftShift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
+                    ""action"": ""Action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""152e5621-49a1-4529-9cf6-99b53a5a6598"",
+                    ""path"": ""<Keyboard>/rightAlt"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard Alt"",
+                    ""action"": ""Action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b0d5aabc-0b4f-45bd-8c0b-4f52be0f4a7e"",
+                    ""path"": ""<Keyboard>/0"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard Num"",
                     ""action"": ""Action"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -153,6 +285,28 @@ public class @DefaultInput : IInputActionCollection, IDisposable
         {
             ""name"": ""Keyboard"",
             ""bindingGroup"": ""Keyboard"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Keyboard>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Keyboard Alt"",
+            ""bindingGroup"": ""Keyboard Alt"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Keyboard>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Keyboard Num"",
+            ""bindingGroup"": ""Keyboard Num"",
             ""devices"": [
                 {
                     ""devicePath"": ""<Keyboard>"",
@@ -269,6 +423,24 @@ public class @DefaultInput : IInputActionCollection, IDisposable
         {
             if (m_KeyboardSchemeIndex == -1) m_KeyboardSchemeIndex = asset.FindControlSchemeIndex("Keyboard");
             return asset.controlSchemes[m_KeyboardSchemeIndex];
+        }
+    }
+    private int m_KeyboardAltSchemeIndex = -1;
+    public InputControlScheme KeyboardAltScheme
+    {
+        get
+        {
+            if (m_KeyboardAltSchemeIndex == -1) m_KeyboardAltSchemeIndex = asset.FindControlSchemeIndex("Keyboard Alt");
+            return asset.controlSchemes[m_KeyboardAltSchemeIndex];
+        }
+    }
+    private int m_KeyboardNumSchemeIndex = -1;
+    public InputControlScheme KeyboardNumScheme
+    {
+        get
+        {
+            if (m_KeyboardNumSchemeIndex == -1) m_KeyboardNumSchemeIndex = asset.FindControlSchemeIndex("Keyboard Num");
+            return asset.controlSchemes[m_KeyboardNumSchemeIndex];
         }
     }
     public interface IGameActions
