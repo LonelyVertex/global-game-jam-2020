@@ -65,7 +65,7 @@ public class PlayerInteraction : MonoBehaviour
 
     void PushBoxToRocket()
     {
-        if (Rocket.Instance.PushBox(currentBox))
+        if (Rocket.Instance.PushBox(currentBox, this))
         {
             currentBox = null;
         }

@@ -3,8 +3,9 @@
 public class Box : MonoBehaviour
 {
     [SerializeField] private float aliveTime;
+    [SerializeField] private int value;
 
-    public int Value => 1;
+    public int Value => value;
 
     private bool canBePicked = true;
 
