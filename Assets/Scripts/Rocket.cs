@@ -11,6 +11,9 @@ public class Rocket : MonoBehaviour
     private Stack<Box> boxes = new Stack<Box>();
     private bool isLaunching;
 
+    public int MaxValue => maxValue;
+    public int CurrentValue => currentValue;
+
     private void Awake()
     {
         instance = this;
@@ -47,6 +50,7 @@ public class Rocket : MonoBehaviour
     {
         // TODO - handle launch
         isLaunching = true;
+        GameManager.Instance.LaunchRocket();
         Debug.Log("Launching rocket with " + player);
     }
 }
