@@ -5,6 +5,18 @@ public class Rocket : StaticAccess<Rocket>
 {
     [SerializeField] private int maxValue = default;
     [SerializeField] private int currentValue = default;
+
+    [SerializeField] private GameObject ghost = default;
+    [SerializeField] private GameObject real = default;
+
+    [SerializeField] private Renderer[] ghostRenderers;
+
+    [SerializeField] private float fillSpeed = 1f;
+
+    MaterialPropertyBlock propertyBlock;
+
+    float targetFill;
+    float currentFill;
     
     private Stack<Box> boxes = new Stack<Box>();
     private bool isLaunching;
@@ -23,6 +35,8 @@ public class Rocket : StaticAccess<Rocket>
         boxes.Push(box);
         box.OnEnterRocket();
 
+        targetFill = (float)currentValue / (float)maxValue;
+
         if (currentValue == maxValue)
         {
             LaunchWith(player);
@@ -36,6 +50,7 @@ public class Rocket : StaticAccess<Rocket>
         if (isLaunching || boxes.Count <= 0) return null;
         var box = boxes.Pop();
         currentValue -= box.Value;
+        targetFill = (float)currentValue / (float)maxValue;
         return box;
     }
 
@@ -43,5 +58,34 @@ public class Rocket : StaticAccess<Rocket>
     {
         isLaunching = true;
         GameManager.Instance.LaunchRocket(player.GetComponent<PlayerInfo>());
+    }
+
+    void SwapRockets()
+    {
+        ghost.SetActive(false);
+        real.SetActive(true);
+    }
+
+    void Start()
+    {
+        propertyBlock = new MaterialPropertyBlock();
+    }
+
+    void Update()
+    {
+        currentFill = Mathf.Lerp(currentFill, targetFill, fillSpeed * Time.deltaTime);
+
+
+        if (currentFill >= 0.95f)
+        {
+            SwapRockets();
+        }
+
+        propertyBlock.SetFloat("_FillAmount", currentFill);
+
+        foreach (var r in ghostRenderers)
+        {
+            r.SetPropertyBlock(propertyBlock);
+        }
     }
 }

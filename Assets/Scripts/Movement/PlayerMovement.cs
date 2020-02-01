@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Rigidbody rb = default;
     [SerializeField] Transform animatorWrapper = default;
 
+    Quaternion targetRotation;
+
     Vector2 input;
 
     public void SetInput(Vector2 i)
@@ -24,9 +26,11 @@ public class PlayerMovement : MonoBehaviour
 
         rb.AddForce(movement * speed);
 
-        if (rb.velocity.magnitude > 0.1f)
+        var rotationVelocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+        if (rotationVelocity.magnitude > 0.1f)
         {
-            animatorWrapper.rotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
+            targetRotation = Quaternion.LookRotation(rotationVelocity);
+            animatorWrapper.rotation = Quaternion.RotateTowards(animatorWrapper.rotation, targetRotation, 10f);
         }
     }
 
