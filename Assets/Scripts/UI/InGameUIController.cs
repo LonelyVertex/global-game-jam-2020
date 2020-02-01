@@ -1,13 +1,23 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class InGameUIController : GameManagerStateListener
 {
-    [SerializeField] private GameObject gamePanel;
-    [SerializeField] private GameObject pausePanel;
-    [SerializeField] private GameObject gameOverPanel;
-    [SerializeField] private GameObject savedPanel;
+    [Header("Panels")]
+    [SerializeField] private GameObject gamePanel = default;
+    [SerializeField] private GameObject pausePanel = default;
+    [SerializeField] private GameObject gameOverPanel = default;
+    [SerializeField] private GameObject savedPanel = default;
+
+    [Header("Game Panel")]
+    [SerializeField] private TextMeshProUGUI currentTimeText = default;
+    [SerializeField] private TextMeshProUGUI currentRocketValue = default;
+    
+    [Header("Saved Panel")]
+    [SerializeField] private Image winnerImage = default;
 
     private bool paused;
 
@@ -40,14 +50,21 @@ public class InGameUIController : GameManagerStateListener
     
     protected override void OnGameManagerStateChange(GameManager.State newState)
     {
-        if (newState == GameManager.State.Game)
+        gameObject.SetActive(newState != GameManager.State.Menu);
+        gamePanel.SetActive(newState == GameManager.State.Game);
+
+        if (newState == GameManager.State.Launch)
         {
-            gameObject.SetActive(true);
-            gamePanel.SetActive(true);
+            gamePanel.SetActive(false);
+            savedPanel.SetActive(true);
+
+            winnerImage.color = GameManager.Instance.Winner.Color;
         }
-        else
+        
+        if (newState == GameManager.State.GameOver)
         {
-            gameObject.SetActive(false);
+            gamePanel.SetActive(false);
+            gameOverPanel.SetActive(true);
         }
     }
 
@@ -63,6 +80,18 @@ public class InGameUIController : GameManagerStateListener
             {
                 Pause();
             }
+        }
+
+        if (GameManager.Instance.CurrentState == GameManager.State.Game)
+        {
+            var currentTime = Mathf.Round(GameManager.Instance.CurrentTime);
+            var min = (int) currentTime / 60;
+            var sec = "" + currentTime % 60;
+            sec = sec.Length > 1 ? sec : $"0{sec}";
+            currentTimeText.text = $"{min}:{sec}";
+
+            var rocket = Rocket.Instance;
+            currentRocketValue.text = $"{rocket.CurrentValue}/{rocket.MaxValue}";
         }
     }
 }

@@ -4,9 +4,9 @@
 public class GroundBreaker : MonoBehaviour
 {
     [SerializeField]
-    float minSpeed;
+    float minSpeed = default;
     [SerializeField]
-    float maxSpeed;
+    float maxSpeed = default;
 
     Vector3 breakVelocity;
 

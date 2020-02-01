@@ -41,9 +41,7 @@ public class Rocket : StaticAccess<Rocket>
 
     void LaunchWith(PlayerInteraction player)
     {
-        // TODO - handle launch
         isLaunching = true;
-        GameManager.Instance.LaunchRocket();
-        Debug.Log("Launching rocket with " + player);
+        GameManager.Instance.LaunchRocket(player.GetComponent<PlayerInfo>());
     }
 }

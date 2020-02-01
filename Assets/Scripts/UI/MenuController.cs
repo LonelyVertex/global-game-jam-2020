@@ -16,8 +16,8 @@ public class MenuController : GameManagerStateListener
     [Header("Countdown")]
     [SerializeField] private float startDelay = default;
     [SerializeField] private GameObject countdown = default;
-    [SerializeField] private Image countdownFill;
-    [SerializeField] private TextMeshProUGUI countdownText;
+    [SerializeField] private Image countdownFill = default;
+    [SerializeField] private TextMeshProUGUI countdownText = default;
     
     [Header("Players")]
     [SerializeField] private RectTransform playerGrid = default;

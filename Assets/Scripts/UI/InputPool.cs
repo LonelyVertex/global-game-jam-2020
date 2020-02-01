@@ -3,9 +3,9 @@ using UnityEngine.InputSystem;
 
 public class InputPool : MonoBehaviour
 {
-    [SerializeField] private ControlsIndicator keyboardArrows;
-    [SerializeField] private ControlsIndicator keyboardWSAD;
-    [SerializeField] private ControlsIndicator gamepad;
+    [SerializeField] private ControlsIndicator keyboardArrows = default;
+    [SerializeField] private ControlsIndicator keyboardWSAD = default;
+    [SerializeField] private ControlsIndicator gamepad = default;
 
     private int gamepadCount;
 
