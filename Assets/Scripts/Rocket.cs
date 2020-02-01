@@ -76,7 +76,7 @@ public class Rocket : StaticAccess<Rocket>
         currentFill = Mathf.Lerp(currentFill, targetFill, fillSpeed * Time.deltaTime);
 
 
-        if (currentFill >= 0.95f)
+        if (currentFill >= 0.99f)
         {
             SwapRockets();
         }
