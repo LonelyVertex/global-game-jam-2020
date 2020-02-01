@@ -3,15 +3,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 
-
 [RequireComponent(typeof(PlayerInputManager))]
 public class LocalMultiplayerManager : StaticAccess<LocalMultiplayerManager>
 {
-    const string KEYBOARD_SCHEME = "Keyboard";
-    const string KEYBOARD_ALT_SCHEME = "Keyboard Alt";
-    const string KEYBOARD_NUM_SCHEME = "Keyboard Num";
-    const string GAMEPAD_SCHEME = "Gamepad";
-
     public delegate void PlayerJoined(PlayerInfo playerInfo);
     public event PlayerJoined OnPlayerJoined;
 
@@ -30,23 +24,23 @@ public class LocalMultiplayerManager : StaticAccess<LocalMultiplayerManager>
         var keyboard = Keyboard.current;
         if (
             keyboard[Key.LeftShift].wasPressedThisFrame &&
-            !IsDevicePaired(keyboard, KEYBOARD_SCHEME)
+            !IsDevicePaired(keyboard, ControlScheme.KEYBOARD)
         ) {
-            JoinPlayer(keyboard, KEYBOARD_SCHEME);
+            JoinPlayer(keyboard, ControlScheme.KEYBOARD);
         }
 
         if (
             keyboard[Key.RightAlt].wasPressedThisFrame &&
-            !IsDevicePaired(keyboard, KEYBOARD_ALT_SCHEME)
+            !IsDevicePaired(keyboard, ControlScheme.KEYBOARD_ALT)
         ) {
-            JoinPlayer(keyboard, KEYBOARD_ALT_SCHEME);
+            JoinPlayer(keyboard, ControlScheme.KEYBOARD_ALT);
         }
 
         if (
             keyboard[Key.Digit0].wasPressedThisFrame &&
-            !IsDevicePaired(keyboard, KEYBOARD_NUM_SCHEME)
+            !IsDevicePaired(keyboard, ControlScheme.KEYBOARD_NUM)
         ) {
-            JoinPlayer(keyboard, KEYBOARD_NUM_SCHEME);
+            JoinPlayer(keyboard, ControlScheme.KEYBOARD_NUM);
         }
 
         var gamepads = Gamepad.all;
@@ -54,9 +48,9 @@ public class LocalMultiplayerManager : StaticAccess<LocalMultiplayerManager>
         {
             if (
                 g[GamepadButton.South].wasPressedThisFrame &&
-                !IsDevicePaired(g, GAMEPAD_SCHEME)
+                !IsDevicePaired(g, ControlScheme.GAMEPAD)
             ) {
-                JoinPlayer(g, GAMEPAD_SCHEME);
+                JoinPlayer(g, ControlScheme.GAMEPAD);
             }
         }
     }
