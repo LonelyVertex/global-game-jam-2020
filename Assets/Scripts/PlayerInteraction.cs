@@ -1,10 +1,14 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider))]
 public class PlayerInteraction : MonoBehaviour
 {
     [SerializeField] private float pickRadius = default;
     [SerializeField] private float rocketDistance = default;
+    [SerializeField] private Transform boxAnchor = default;
+    [SerializeField] private Collider col = default;
     
     private Box currentBox;
 
@@ -64,7 +68,7 @@ public class PlayerInteraction : MonoBehaviour
         if (box == null || Distance(box) > pickRadius) return;
 
         currentBox = box;
-        box.OnPick(transform);
+        box.OnPick(boxAnchor, col);
     }
 
     void DropBox()
@@ -86,12 +90,17 @@ public class PlayerInteraction : MonoBehaviour
         currentBox = Rocket.Instance.PopBox();
         if (currentBox)
         {
-            currentBox.OnPick(transform);
+            currentBox.OnPick(transform, col);
         }
     }
 
     bool IsNearRocket()
     {
         return rocketDistance >= Vector3.Distance(Rocket.Instance.transform.position, transform.position);
+    }
+
+    private void OnValidate()
+    {
+        col = GetComponent<Collider>();
     }
 }
