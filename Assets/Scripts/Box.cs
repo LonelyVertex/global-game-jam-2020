@@ -25,6 +25,16 @@ public class Box : MonoBehaviour
     [SerializeField] private float largeBoxScale = default;
     [SerializeField] private int largeBoxValue = default;
 
+    [Header("Materials")]
+    [SerializeField] private Renderer renderer;
+    [SerializeField] private int materialIndex;
+
+    [Header("Colors")]
+    [SerializeField][ColorUsage(false, true)] private Color colorMin;
+    [SerializeField][ColorUsage(false, true)] private Color colorMax;
+    [SerializeField][ColorUsage(false, true)] private Color colorUsable;
+    [SerializeField][ColorUsage(false, true)] private Color colorUnusable;
+
     private int value;
     public int Value => value;
 
@@ -32,11 +42,33 @@ public class Box : MonoBehaviour
     public bool CanBePicked => canBePicked;
 
     private Collider playerCollider;
+    private MaterialPropertyBlock materialPropertyBlock;
+    private static readonly int EmissionColor = Shader.PropertyToID("_EmissionColor");
 
+    private Vector3 rocketPosition;
+
+    public bool isNearRocket = false;
+
+    bool IsUsable
+    {
+        get
+        {
+            var rocket = Rocket.Instance;
+            return rocket.CurrentValue + value <= rocket.MaxValue;
+        }
+    }
+    
     void Start()
     {
         RandmizeSize();
         Invoke(nameof(Despawn), aliveTime);
+
+        rocketPosition = Rocket.Instance.transform.position;
+        
+        materialPropertyBlock = new MaterialPropertyBlock();
+        renderer.GetPropertyBlock(materialPropertyBlock, materialIndex);
+        
+        UpdateColor();
     }
     
     void RandmizeSize()
@@ -59,6 +91,19 @@ public class Box : MonoBehaviour
                 transform.localScale = new Vector3(largeBoxScale, largeBoxScale, largeBoxScale);
                 break;
         }   
+    }
+
+    private void Update()
+    {
+        UpdateColor();
+    }
+
+    void UpdateColor()
+    {
+        var targetColor = isNearRocket ? (IsUsable ? colorUsable : colorUnusable) : colorMax;
+        var color = Color.Lerp(targetColor, colorMin, Vector3.Distance(transform.position, rocketPosition) / 17);
+        materialPropertyBlock.SetColor(EmissionColor, color);
+        renderer.SetPropertyBlock(materialPropertyBlock, materialIndex);
     }
 
     void Despawn()

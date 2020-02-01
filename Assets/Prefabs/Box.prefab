@@ -55,6 +55,13 @@ MonoBehaviour:
   mediumBoxValue: 3
   largeBoxScale: 2
   largeBoxValue: 5
+  renderer: {fileID: 8184592867294405780}
+  materialIndex: 0
+  colorMin: {r: 0, g: 0, b: 0, a: 0}
+  colorMax: {r: 1, g: 1, b: 1, a: 0}
+  colorUsable: {r: 0, g: 1.39772, b: 0.13904022, a: 0}
+  colorUnusable: {r: 1.0592737, g: 0, b: 0, a: 0}
+  isNearRocket: 0
 --- !u!65 &8852487507045637310
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -161,6 +168,12 @@ PrefabInstance:
 --- !u!4 &6913601628146999899 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 878c6869cd06e46cf92443902d6f6502,
+    type: 3}
+  m_PrefabInstance: {fileID: 1911981191856785729}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8184592867294405780 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: 878c6869cd06e46cf92443902d6f6502,
     type: 3}
   m_PrefabInstance: {fileID: 1911981191856785729}
   m_PrefabAsset: {fileID: 0}
