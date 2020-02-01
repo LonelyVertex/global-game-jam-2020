@@ -24,6 +24,9 @@ public class GameManager : StaticAccess<GameManager>
     private float currentTime;
     public float CurrentTime => currentTime;
 
+    private bool playersCanJoin = true;
+    public bool PlayersCanJoin => playersCanJoin;
+
     void Update()
     {
         if (state == State.Game)
@@ -38,13 +41,18 @@ public class GameManager : StaticAccess<GameManager>
         }
     }
 
+    public void LockPlayers()
+    {
+        playersCanJoin = false;
+    }
+
     public void StartGame()
     {
         state = State.Game;
         currentTime = timeLimit;
         NotifyStateChange();
     }
-
+    
     public void LaunchRocket(PlayerInfo player)
     {
         winner = player;

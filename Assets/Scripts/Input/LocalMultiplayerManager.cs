@@ -21,6 +21,8 @@ public class LocalMultiplayerManager : StaticAccess<LocalMultiplayerManager>
 
     void Update()
     {
+        if (!GameManager.Instance.PlayersCanJoin) return;
+        
         var keyboard = Keyboard.current;
         if (
             keyboard[Key.LeftShift].wasPressedThisFrame &&

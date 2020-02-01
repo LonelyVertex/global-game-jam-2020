@@ -68,6 +68,7 @@ public class MenuController : GameManagerStateListener
             startingGame = true;
             startCountdown = startDelay;
             countdown.SetActive(true);
+            GameManager.Instance.LockPlayers();
             UpdateCountdown();
         }
 
