@@ -1,30 +1,26 @@
 ﻿using UnityEngine;
 
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(PlayerMovement))]
 public class PlayerAnimationController : MonoBehaviour
 {
+    readonly int velocityId = Animator.StringToHash("Velocity");
+
     [SerializeField]
-    Rigidbody rb;
+    PlayerMovement playerMovement;
     [SerializeField]
     Animator animator;
 
-    int velocityId;
-
-    void Start()
-    {
-        velocityId = Animator.StringToHash("Velocity");
-    }
 
     void Update()
     {
-        animator.SetFloat(velocityId, rb.velocity.magnitude);
+        animator.SetFloat(velocityId, playerMovement.Velocity.magnitude);
     }
 
 #if UNITY_EDITOR
     void OnValidate()
     {
-        rb = GetComponent<Rigidbody>();
+        playerMovement = GetComponent<PlayerMovement>();
         animator = GetComponentInChildren<Animator>();
     }
 #endif

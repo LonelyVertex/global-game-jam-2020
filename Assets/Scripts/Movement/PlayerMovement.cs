@@ -5,14 +5,24 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
+    public Vector3 Velocity => velocity;
+
     [SerializeField] float speed = default;
     [SerializeField] float respawnDelay = default;
     [SerializeField] Rigidbody rb = default;
     [SerializeField] Transform animatorWrapper = default;
 
+    [SerializeField] float acceleration = 0.2f;
+
     Quaternion targetRotation;
 
     Vector2 input;
+    Vector3 speedSmoothing;
+    Vector3 currentSpeed;
+
+    Vector3 prevMovement;
+
+    Vector3 velocity;
 
     public void SetInput(Vector2 i)
         => input = i;
@@ -22,15 +32,22 @@ public class PlayerMovement : MonoBehaviour
         if (GameManager.Instance.CurrentState != GameManager.State.Game)
             return;
 
+        var prevPos = rb.position;
+
         Vector3 movement = new Vector3(input.x, 0, input.y).normalized;
 
-        rb.AddForce(movement * speed);
+        var targetSpeed = movement * speed;
+        currentSpeed = Vector3.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothing, acceleration);
 
-        var rotationVelocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+        rb.MovePosition(prevPos + (currentSpeed * Time.fixedDeltaTime));
+
+        velocity = rb.position - prevPos;
+        
+        var rotationVelocity = new Vector3(velocity.x, 0, velocity.z);
         if (rotationVelocity.magnitude > 0.1f)
         {
             targetRotation = Quaternion.LookRotation(rotationVelocity);
-            animatorWrapper.rotation = Quaternion.RotateTowards(animatorWrapper.rotation, targetRotation, 10f);
+            animatorWrapper.rotation = Quaternion.RotateTowards(animatorWrapper.rotation, targetRotation, 15f);
         }
     }
 

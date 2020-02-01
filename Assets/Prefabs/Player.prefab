@@ -196,10 +196,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad0c739185f474280bdeb13bc3d77002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 15
   respawnDelay: 2
   rb: {fileID: 8984043305875690045}
   animatorWrapper: {fileID: 8034487251343067807}
+  acceleration: 0.35
 --- !u!114 &2008418932120608548
 MonoBehaviour:
   m_ObjectHideFlags: 0
