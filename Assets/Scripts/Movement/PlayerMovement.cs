@@ -5,12 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    float speed = default;
-    [SerializeField]
-    Rigidbody rb = default;
-    [SerializeField]
-    Transform animatorWrapper = default;
+    [SerializeField] float speed = default;
+    [SerializeField] float respawnDelay = default;
+    [SerializeField] Rigidbody rb = default;
+    [SerializeField] Transform animatorWrapper = default;
 
     Vector2 input;
 
@@ -32,11 +30,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("DeadZone"))
         {
-            Respawn();
+            Invoke(nameof(Respawn), respawnDelay);
         }
     }
 

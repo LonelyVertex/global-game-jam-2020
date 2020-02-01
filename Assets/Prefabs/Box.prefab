@@ -47,9 +47,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aliveTime: 15
-  value: 8
   rb: {fileID: 3067609037269055105}
   col: {fileID: 8852487507045637310}
+  smallBoxScale: 0.75
+  smallBoxValue: 1
+  mediumBoxScale: 1.25
+  mediumBoxValue: 3
+  largeBoxScale: 2
+  largeBoxValue: 5
 --- !u!65 &8852487507045637310
 BoxCollider:
   m_ObjectHideFlags: 0

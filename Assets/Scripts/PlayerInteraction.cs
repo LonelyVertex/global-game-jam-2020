@@ -16,6 +16,9 @@ public class PlayerInteraction : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, pickRadius);
+        
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, rocketDistance);
     }
 
     void OnDeath()
@@ -58,7 +61,7 @@ public class PlayerInteraction : MonoBehaviour
 
     void TryPickUpBox()
     {
-        float Distance(Box b) => Vector3.Distance(b.transform.position, transform.position);
+        float Distance(Box b) => Vector3.Distance(b.transform.position, transform.position) - b.transform.localScale.x / 2;
 
         var box = FindObjectsOfType<Box>()
             .Where(b => b.CanBePicked)

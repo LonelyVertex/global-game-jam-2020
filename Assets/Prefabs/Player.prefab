@@ -197,6 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
+  respawnDelay: 2
   rb: {fileID: 8984043305875690045}
   animatorWrapper: {fileID: 8034487251343067807}
 --- !u!114 &2008418932120608548
@@ -212,8 +213,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickRadius: 2
-  rocketDistance: 3
+  rocketDistance: 4.5
   boxAnchor: {fileID: 5252743161521981048}
+  col: {fileID: 3718297308067676177}
 --- !u!114 &3620818439814286262
 MonoBehaviour:
   m_ObjectHideFlags: 0
