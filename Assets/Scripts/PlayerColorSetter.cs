@@ -12,6 +12,10 @@ public class PlayerColorSetter : MonoBehaviour
     }
 
     readonly int PLAYER_COLOR_ID = Shader.PropertyToID("_BaseColor");
+    readonly int PLAYER_EMISSION_ID = Shader.PropertyToID("_EmissionColor");
+
+    [SerializeField]
+    float intensityModifier;
 
     [SerializeField]
     MaterialPropertyInfo[] meshRenderers;
@@ -31,6 +35,7 @@ public class PlayerColorSetter : MonoBehaviour
             r.renderer.GetPropertyBlock(mp, r.index);
 
             mp.SetColor(PLAYER_COLOR_ID, color);
+            mp.SetColor(PLAYER_EMISSION_ID, color * intensityModifier);
 
             r.renderer.SetPropertyBlock(mp, r.index);
         }
