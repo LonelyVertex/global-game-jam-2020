@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    [SerializeField] private float pickRadius;
-    [SerializeField] private float rocketDistance;
+    [SerializeField] private float pickRadius = default;
+    [SerializeField] private float rocketDistance = default;
+    
     private Box currentBox;
 
     private void OnDrawGizmos()
@@ -58,7 +59,7 @@ public class PlayerInteraction : MonoBehaviour
         var box = FindObjectsOfType<Box>()
             .Where(b => b.CanBePicked)
             .OrderBy(Distance)
-            .First();
+            .FirstOrDefault();
 
         if (box == null || Distance(box) > pickRadius) return;
 

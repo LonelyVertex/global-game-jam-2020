@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(PlayerMovement))]
-public class PlayerActionsInput : MonoBehaviour
+public class PlayerActionsInput : GameManagerStateListener
 {
     [SerializeField]
     PlayerInput input = default;
@@ -12,10 +12,14 @@ public class PlayerActionsInput : MonoBehaviour
     PlayerMovement playerMovement = default;
 
     Vector2 controllerInput;
+    private bool controlsEnabled = false;
 
     void Update()
     {
-        playerMovement.SetInput(controllerInput);
+        if (controlsEnabled)
+        {
+            playerMovement.SetInput(controllerInput);
+        }
     }
 
     void OnMovement(InputValue val)
@@ -25,7 +29,11 @@ public class PlayerActionsInput : MonoBehaviour
 
     void OnAction()
     {
-        Debug.Log("Action!");
+    }
+    
+    protected override void OnGameManagerStateChange(GameManager.State newState)
+    {
+        controlsEnabled = newState == GameManager.State.Game;
     }
 
 #if UNITY_EDITOR

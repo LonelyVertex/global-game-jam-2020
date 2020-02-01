@@ -1,29 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 
 
 [RequireComponent(typeof(PlayerInputManager))]
-public class LocalMultiplayerManager : MonoBehaviour
+public class LocalMultiplayerManager : StaticAccess<LocalMultiplayerManager>
 {
     const string KEYBOARD_SCHEME = "Keyboard";
     const string KEYBOARD_ALT_SCHEME = "Keyboard Alt";
     const string KEYBOARD_NUM_SCHEME = "Keyboard Num";
     const string GAMEPAD_SCHEME = "Gamepad";
 
-    public Action<Transform> onPlayerJoined;
+    public delegate void PlayerJoined(PlayerInfo playerInfo);
+    public event PlayerJoined OnPlayerJoined;
 
     [SerializeField]
     PlayerInputManager inputManager;
 
     HashSet<KeyValuePair<InputDevice, string>> pairedDevices = new HashSet<KeyValuePair<InputDevice, string>>();
-
-
-    public void PlayerJoined(Transform playerInput)
+    
+    public void RegisterPlayer(PlayerInfo playerInfo)
     {
-        onPlayerJoined?.Invoke(playerInput);
+        OnPlayerJoined?.Invoke(playerInfo);
     }
 
     void Update()

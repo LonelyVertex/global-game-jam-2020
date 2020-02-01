@@ -1,23 +1,16 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class Rocket : MonoBehaviour
+public class Rocket : StaticAccess<Rocket>
 {
-    private static Rocket instance;
-    public static Rocket Instance => instance;
-
-    [SerializeField] private int maxValue;
-    [SerializeField] private int currentValue;
+    [SerializeField] private int maxValue = default;
+    [SerializeField] private int currentValue = default;
+    
     private Stack<Box> boxes = new Stack<Box>();
     private bool isLaunching;
 
     public int MaxValue => maxValue;
     public int CurrentValue => currentValue;
-
-    private void Awake()
-    {
-        instance = this;
-    }
 
     public bool PushBox(Box box, PlayerInteraction player)
     {

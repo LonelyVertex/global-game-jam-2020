@@ -3,25 +3,36 @@ using Cinemachine;
 
 
 [RequireComponent(typeof(CinemachineTargetGroup))]
-public class TargetGroupPlayerAssigner : MonoBehaviour
+public class TargetGroupPlayerAssigner : GameManagerStateListener
 {
     [SerializeField]
-    float defaultRadius;
+    float defaultRadius = default;
 
     [SerializeField]
-    CinemachineTargetGroup targetGroup;
+    CinemachineTargetGroup targetGroup = default;
 
-    LocalMultiplayerManager multiplayerManager;
-
-    void Start()
+    protected override void Start()
     {
-        multiplayerManager = FindObjectOfType<LocalMultiplayerManager>();
-        multiplayerManager.onPlayerJoined += PlayerJoined;
+        LocalMultiplayerManager.Instance.OnPlayerJoined += OnPlayerJoined;
+        targetGroup.AddMember(Rocket.Instance.transform, 1, defaultRadius);
     }
 
-    void PlayerJoined(Transform tr)
+    protected override void OnDestroy()
     {
-        targetGroup.AddMember(tr, 1, defaultRadius);
+        if (LocalMultiplayerManager.Instance != null)
+        {
+            LocalMultiplayerManager.Instance.OnPlayerJoined -= OnPlayerJoined;
+        }
+    }
+
+    protected override void OnGameManagerStateChange(GameManager.State newState)
+    {
+        targetGroup.DoUpdate();
+    }
+
+    void OnPlayerJoined(PlayerInfo playerInfo)
+    {
+        targetGroup.AddMember(playerInfo.transform, 1, defaultRadius);
     }
 
 #if UNITY_EDITOR

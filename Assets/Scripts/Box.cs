@@ -2,8 +2,8 @@
 
 public class Box : MonoBehaviour
 {
-    [SerializeField] private float aliveTime;
-    [SerializeField] private int value;
+    [SerializeField] private float aliveTime = default;
+    [SerializeField] private int value = default;
 
     public int Value => value;
 

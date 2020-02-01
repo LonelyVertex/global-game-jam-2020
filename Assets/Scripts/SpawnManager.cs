@@ -1,25 +1,16 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class SpawnManager : MonoBehaviour
+public class SpawnManager : StaticAccess<SpawnManager>
 {
 
     [Header("Area")]
-    [SerializeField] private float areaWidth;
-    [SerializeField] private float areaHeight;
-    [SerializeField] private float innerAreaWidth;
-    [SerializeField] private float innerAreaHeight;
+    [SerializeField] private float areaWidth = default;
+    [SerializeField] private float areaHeight = default;
+    [SerializeField] private float innerAreaWidth = default;
+    [SerializeField] private float innerAreaHeight = default;
 
-    private static SpawnManager instance;
     private Vector3 position;
-
-    public static SpawnManager Instance => instance;
-
-    void Awake()
-    {
-        instance = this;
-    }
 
     private void Start()
     {

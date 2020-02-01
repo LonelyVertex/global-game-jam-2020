@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class GameManager : MonoBehaviour
+﻿public class GameManager : StaticAccess<GameManager>
 {
     public enum State
     {
@@ -11,17 +9,9 @@ public class GameManager : MonoBehaviour
     
     public delegate void StateChanged(State newState);
     public event StateChanged OnStateChange;
-
-    private static GameManager instance;
-    public static GameManager Instance => instance;
     
     private State state = State.Menu;
     public State CurrentState => state;
-
-    private void Awake()
-    {
-        instance = this;
-    }
 
     public void StartGame()
     {

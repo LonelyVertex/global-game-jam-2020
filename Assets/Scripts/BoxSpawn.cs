@@ -3,9 +3,9 @@
 public class BoxSpawn : GameManagerStateListener
 {
     [Header("Spawn")]
-    [SerializeField] private GameObject boxPrefab;
-    [SerializeField] private float firstSpawn;
-    [SerializeField] private float spawnInterval;
+    [SerializeField] private GameObject boxPrefab = default;
+    [SerializeField] private float firstSpawn = default;
+    [SerializeField] private float spawnInterval = default;
     
 
     void Spawn()
