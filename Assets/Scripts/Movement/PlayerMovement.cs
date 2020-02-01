@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     float speed = default;
     [SerializeField]
     Rigidbody rb = default;
+    [SerializeField]
+    Transform animatorWrapper = default;
 
     Vector2 input;
 
@@ -17,9 +19,17 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (GameManager.Instance.CurrentState != GameManager.State.Game)
+            return;
+
         Vector3 movement = new Vector3(input.x, 0, input.y).normalized;
 
         rb.AddForce(movement * speed);
+
+        if (rb.velocity.magnitude > 0.1f)
+        {
+            animatorWrapper.rotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
+        }
     }
 
     private void OnCollisionEnter(Collision other)
@@ -35,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
         SendMessage("OnDeath");
         rb.velocity = Vector3.zero;
         transform.position = SpawnManager.Instance.RandomSpawnPosition();
+        animatorWrapper.rotation = Quaternion.identity;
     }
 
 #if UNITY_EDITOR

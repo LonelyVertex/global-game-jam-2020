@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &63287288139525722
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8034487251343067807}
+  m_Layer: 0
+  m_Name: AnimatorWrapper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8034487251343067807
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63287288139525722}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8246461118582777851}
+  m_Father: {fileID: 8984043305875680705}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8984043305875690046
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8984043305875680705}
-  - component: {fileID: 8984043305875690044}
+  - component: {fileID: 3718297308067676177}
   - component: {fileID: 8984043305875690045}
   - component: {fileID: 8984043305875680704}
   - component: {fileID: 8984043305875680710}
@@ -35,12 +66,12 @@ Transform:
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 8246461118582777851}
+  - {fileID: 8034487251343067807}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &8984043305875690044
-BoxCollider:
+--- !u!136 &3718297308067676177
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -49,9 +80,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.16, y: 2.8, z: 1.51}
-  m_Center: {x: 0, y: 1.37, z: -0.26}
+  m_Radius: 0.68
+  m_Height: 3.37
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.67, z: -0.15}
 --- !u!54 &8984043305875690045
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -135,6 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   rb: {fileID: 8984043305875690045}
+  animatorWrapper: {fileID: 8034487251343067807}
 --- !u!114 &2008418932120608548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,7 +214,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 8984043305875680705}
+    m_TransformParent: {fileID: 8034487251343067807}
     m_Modifications:
     - target: {fileID: 1262319935745043813, guid: 7a16e34577b3744108e190556c99b822,
         type: 3}
@@ -190,33 +223,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2873279604882988918, guid: 7a16e34577b3744108e190556c99b822,
         type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2873279604882988918, guid: 7a16e34577b3744108e190556c99b822,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2873279604882988918, guid: 7a16e34577b3744108e190556c99b822,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2873279604882988918, guid: 7a16e34577b3744108e190556c99b822,
-        type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2873279604882988918, guid: 7a16e34577b3744108e190556c99b822,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2873279604882988918, guid: 7a16e34577b3744108e190556c99b822,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2873279604882988918, guid: 7a16e34577b3744108e190556c99b822,
         type: 3}
