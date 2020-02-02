@@ -35,6 +35,7 @@ public class InGameUIController : GameManagerStateListener
         gamePanel.SetActive(false);
         pausePanel.SetActive(true);
         pausePP.SetActive(true);
+        Cursor.visible = true;
     }
 
     public void CancelPause()
@@ -44,6 +45,7 @@ public class InGameUIController : GameManagerStateListener
         gamePanel.SetActive(true);
         pausePanel.SetActive(false);
         pausePP.SetActive(false);
+        Cursor.visible = false;
     }
 
     public void OpenMenu()
@@ -64,6 +66,8 @@ public class InGameUIController : GameManagerStateListener
 
         gamePanel.SetActive(newState == GameManager.State.Game);
         gamePP.SetActive(newState == GameManager.State.Game);
+
+        Cursor.visible = newState != GameManager.State.Game;
 
         if (newState == GameManager.State.Launch)
         {
