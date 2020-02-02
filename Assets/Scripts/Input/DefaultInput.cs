@@ -182,7 +182,7 @@ public class @DefaultInput : IInputActionCollection, IDisposable
                 {
                     ""name"": ""up"",
                     ""id"": ""2a7e13ad-b701-434b-82a3-26d0c08e5de5"",
-                    ""path"": ""<Keyboard>/8"",
+                    ""path"": ""<Keyboard>/numpad8"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard Num"",
@@ -193,7 +193,7 @@ public class @DefaultInput : IInputActionCollection, IDisposable
                 {
                     ""name"": ""down"",
                     ""id"": ""f367fe51-448f-419a-94d8-a55624823cff"",
-                    ""path"": ""<Keyboard>/5"",
+                    ""path"": ""<Keyboard>/numpad5"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard Num"",
@@ -204,7 +204,7 @@ public class @DefaultInput : IInputActionCollection, IDisposable
                 {
                     ""name"": ""left"",
                     ""id"": ""c69045c2-5d66-43df-bf0d-15768a7b4998"",
-                    ""path"": ""<Keyboard>/4"",
+                    ""path"": ""<Keyboard>/numpad4"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard Num"",
@@ -215,7 +215,7 @@ public class @DefaultInput : IInputActionCollection, IDisposable
                 {
                     ""name"": ""right"",
                     ""id"": ""68787192-5f3f-4477-b36a-f26293a5aaed"",
-                    ""path"": ""<Keyboard>/6"",
+                    ""path"": ""<Keyboard>/numpad6"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard Num"",
@@ -259,7 +259,7 @@ public class @DefaultInput : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""b0d5aabc-0b4f-45bd-8c0b-4f52be0f4a7e"",
-                    ""path"": ""<Keyboard>/0"",
+                    ""path"": ""<Keyboard>/numpad0"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard Num"",

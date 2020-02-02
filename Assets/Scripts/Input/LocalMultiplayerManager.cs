@@ -39,7 +39,7 @@ public class LocalMultiplayerManager : StaticAccess<LocalMultiplayerManager>
         }
 
         if (
-            keyboard[Key.Digit0].wasPressedThisFrame &&
+            keyboard[Key.Numpad0].wasPressedThisFrame &&
             !IsDevicePaired(keyboard, ControlScheme.KEYBOARD_NUM)
         ) {
             JoinPlayer(keyboard, ControlScheme.KEYBOARD_NUM);
