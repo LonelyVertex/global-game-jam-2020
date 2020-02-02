@@ -101,7 +101,7 @@ public class PlayerInteraction : MonoBehaviour
         currentBox = Rocket.Instance.PopBox();
         if (currentBox)
         {
-            currentBox.OnPick(transform, col);
+            currentBox.OnPick(boxAnchor, col);
         }
     }
 
