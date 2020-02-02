@@ -45,6 +45,11 @@ public class MenuController : GameManagerStateListener
         creditsPanel.SetActive(false);
     }
 
+    public void OpenLonelyVertexWeb()
+    {
+        Application.OpenURL("https://lonelyvertex.com");
+    }
+
     protected override void Start()
     {
         base.Start();
