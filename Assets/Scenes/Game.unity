@@ -1423,7 +1423,7 @@ MonoBehaviour:
   boxPrefab: {fileID: 4246650273169126361, guid: 8e40a0ddeb2d040c0aa486b491a69c18,
     type: 3}
   firstSpawn: 1
-  spawnInterval: 5
+  spawnInterval: 3
 --- !u!4 &752767208
 Transform:
   m_ObjectHideFlags: 0
@@ -2409,17 +2409,17 @@ PrefabInstance:
     - target: {fileID: 4575947685824874767, guid: 072f8668ced1f41b4b8d5f80f2ab7ddb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.00000071525574
+      value: -0.00000047683716
       objectReference: {fileID: 0}
     - target: {fileID: 4575947685824874767, guid: 072f8668ced1f41b4b8d5f80f2ab7ddb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 398.38013
+      value: 329.09818
       objectReference: {fileID: 0}
     - target: {fileID: 4575947685824874767, guid: 072f8668ced1f41b4b8d5f80f2ab7ddb,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -230.00488
+      value: -190.00494
       objectReference: {fileID: 0}
     - target: {fileID: 4575947685824874767, guid: 072f8668ced1f41b4b8d5f80f2ab7ddb,
         type: 3}
@@ -3440,17 +3440,17 @@ PrefabInstance:
     - target: {fileID: 3665428871210348802, guid: 4bc49d0cd92bb4bb68aa8d6127c166f0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.00000071525574
+      value: -0.00000047683716
       objectReference: {fileID: 0}
     - target: {fileID: 3665428871210348802, guid: 4bc49d0cd92bb4bb68aa8d6127c166f0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 398.38013
+      value: 329.09818
       objectReference: {fileID: 0}
     - target: {fileID: 3665428871210348802, guid: 4bc49d0cd92bb4bb68aa8d6127c166f0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -230.00488
+      value: -190.00494
       objectReference: {fileID: 0}
     - target: {fileID: 3665428871210348802, guid: 4bc49d0cd92bb4bb68aa8d6127c166f0,
         type: 3}
