@@ -12,6 +12,13 @@ public class InGameUIController : GameManagerStateListener
     [SerializeField] private GameObject gameOverPanel = default;
     [SerializeField] private GameObject savedPanel = default;
 
+    [Header("PostProcessing")]
+    [SerializeField] private GameObject menuPP = default;
+    [SerializeField] private GameObject gamePP = default;
+    [SerializeField] private GameObject pausePP = default;
+    [SerializeField] private GameObject gameOverPP = default;
+    [SerializeField] private GameObject savedPP = default;
+
     [Header("Game Panel")]
     [SerializeField] private TextMeshProUGUI currentTimeText = default;
     [SerializeField] private TextMeshProUGUI currentRocketValue = default;
@@ -27,6 +34,7 @@ public class InGameUIController : GameManagerStateListener
         paused = true;
         gamePanel.SetActive(false);
         pausePanel.SetActive(true);
+        pausePP.SetActive(true);
     }
 
     public void CancelPause()
@@ -35,6 +43,7 @@ public class InGameUIController : GameManagerStateListener
         paused = false;
         gamePanel.SetActive(true);
         pausePanel.SetActive(false);
+        pausePP.SetActive(false);
     }
 
     public void OpenMenu()
@@ -51,7 +60,10 @@ public class InGameUIController : GameManagerStateListener
     protected override void OnGameManagerStateChange(GameManager.State newState)
     {
         gameObject.SetActive(newState != GameManager.State.Menu);
+        menuPP.SetActive(newState == GameManager.State.Menu);
+
         gamePanel.SetActive(newState == GameManager.State.Game);
+        gamePP.SetActive(newState == GameManager.State.Game);
 
         if (newState == GameManager.State.Launch)
         {
@@ -65,6 +77,7 @@ public class InGameUIController : GameManagerStateListener
         {
             gamePanel.SetActive(false);
             gameOverPanel.SetActive(true);
+            gameOverPP.SetActive(true);
         }
     }
 
