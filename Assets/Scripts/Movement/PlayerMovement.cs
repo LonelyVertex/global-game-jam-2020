@@ -74,6 +74,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Respawn()
     {
+        if (GameManager.Instance.CurrentState == GameManager.State.Launch)
+            return;
+
         SendMessage("OnDeath");
         
         alive = true;

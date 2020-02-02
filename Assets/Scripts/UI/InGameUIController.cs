@@ -72,8 +72,6 @@ public class InGameUIController : GameManagerStateListener
         if (newState == GameManager.State.Launch)
         {
             gamePanel.SetActive(false);
-            savedPanel.SetActive(true);
-
             winnerImage.color = GameManager.Instance.Winner.Color;
         }
         

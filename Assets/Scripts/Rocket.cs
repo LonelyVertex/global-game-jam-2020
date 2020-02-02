@@ -75,12 +75,6 @@ public class Rocket : StaticAccess<Rocket>
     {
         currentFill = Mathf.Lerp(currentFill, targetFill, fillSpeed * Time.deltaTime);
 
-
-        if (currentFill >= 0.99f)
-        {
-            SwapRockets();
-        }
-
         propertyBlock.SetFloat("_FillAmount", currentFill);
 
         foreach (var r in ghostRenderers)

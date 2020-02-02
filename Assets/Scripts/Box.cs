@@ -108,6 +108,9 @@ public class Box : MonoBehaviour
 
     void Despawn()
     {
+        if (GameManager.Instance.CurrentState == GameManager.State.Launch)
+            return;
+
         Destroy(gameObject);
     }
 
