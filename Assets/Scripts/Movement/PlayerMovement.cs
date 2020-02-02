@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
         if (rotationVelocity.magnitude > 0.1f)
         {
             targetRotation = Quaternion.LookRotation(rotationVelocity);
-            animatorWrapper.rotation = Quaternion.RotateTowards(animatorWrapper.rotation, targetRotation, 15f);
+            animatorWrapper.rotation = Quaternion.RotateTowards(animatorWrapper.rotation, targetRotation, 30f);
         }
     }
 
