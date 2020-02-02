@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  respawnDelay: 2
+  respawnDelay: 4
   rb: {fileID: 8984043305875690045}
   animatorWrapper: {fileID: 8034487251343067807}
   acceleration: 0.35

@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 
 [RequireComponent(typeof(Rigidbody))]
@@ -24,12 +23,21 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 velocity;
 
+    bool alive = true;
+
+    bool InputEnabled => alive && GameManager.Instance.CurrentState == GameManager.State.Game;
+
     public void SetInput(Vector2 i)
-        => input = i;
+    {
+        if (InputEnabled)
+        {
+            input = i;
+        }
+    }
 
     void FixedUpdate()
     {
-        if (GameManager.Instance.CurrentState != GameManager.State.Game)
+        if (!InputEnabled)
             return;
 
         var prevPos = rb.position;
@@ -53,8 +61,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("DeadZone"))
+        if (alive && other.gameObject.CompareTag("DeadZone"))
         {
+            alive = false;
+            input = Vector3.zero;
+            
+            TargetGroupPlayerAssigner.Instance.RemovePlayer(transform);
+            
             Invoke(nameof(Respawn), respawnDelay);
         }
     }
@@ -62,9 +75,14 @@ public class PlayerMovement : MonoBehaviour
     void Respawn()
     {
         SendMessage("OnDeath");
+        
+        alive = true;
         rb.velocity = Vector3.zero;
-        transform.position = SpawnManager.Instance.RandomSpawnPosition();
+        currentSpeed = Vector3.zero;
         animatorWrapper.rotation = Quaternion.identity;
+        
+        TargetGroupPlayerAssigner.Instance.AddPlayer(transform);
+        rb.MovePosition(SpawnManager.Instance.RandomSpawnPosition());
     }
 
 #if UNITY_EDITOR
